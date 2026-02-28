@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>birthday_game_os 🎁</title>
+    <link rel="icon" href="cute-birthday-cake-cartoon-free-vector-removebg-preview.png" style="border-radius: 10px;">
+    <style>
+        :root { --main-color: #EF438C; --secondary: #a29bfe; --bg-color: #f7f1e3; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        
+        .cotainer { background: white; padding: 30px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 90%; max-width: 450px; text-align: center; }
+        
+        /* تصميم واجهة الترحيب */
+        /* .welcome-screen { display: block; } */
+        .gift-img { width: fit-content; height: fit-content; }
+        
+        /* تصميم الألغاز */
+        .game-screen { display: none; }
+        .hidden { display: none; }
+        
+        .challenge-box { background: #fffaf0; border: 2px dashed #f6b93b; padding: 15px; border-radius: 15px; margin: 15px 0; font-weight: bold; }
+        
+        input { width: 85%; padding: 15px; margin: 15px 0; border: 2px solid #ddd; border-radius: 15px; text-align: center; font-size: 18px; }
+        
+        .btn { background: var(--main-color); color: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer; font-size: 20px; width: 100%; transition: 0.2s; box-shadow: 0 8px 0 #b33939; }
+        .btn:active { transform: translateY(3px); box-shadow: 0 5px 0 #b33978; }
+        .btn:hover { background: #ec62a9; }
+        
+        h1 { color: var(--main-color); margin-top: 0; text-shadow: 2px 2px #fff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div id="welcomeScreen" class="welcome-screen">
+        <img src="Happy birthday.png" alt="هدية غامضة" class="gift-img">
+        
+        
+        <button class="btn" onclick="startGame()">ابدأ التحدي! </button>
+    </div>
+
+    <div id="gameScreen" class="game-screen">
+        
+        <div id="step1">
+            <h1>المرحلة 1: فك التشفير</h1>
+            <p>زرار كل ما ندوس علي بيتغير حاجة في الغرفة</p>
+        
+            <p>ما الكلمة الموجودة بالورقة؟</p>
+            <input type="text" id="ans1" placeholder="أدخل الكلمة">
+            <button class="btn" onclick="checkStep(1, 'جوا')">تأكيد الكلمة</button>
+        </div>
+
+        <div id="step2" class="hidden">
+            <h1>المرحلة 2: لغز الجليد</h1>
+            <p>توجه للثلاجة. ابحث عن ورقة خلف علبة (العصير)!</p>
+            <div class="challenge-box">📸 التحدي المضحك: التقط سيلفي حزيناً مع "فاكهة"!</div>
+            <p>ما هو الرقم المكتوب في الورقة؟</p>
+            <input type="number" id="ans2" placeholder="أدخل الرقم">
+            <button class="btn" onclick="checkStep(2, '2026')">فك التشفير</button>
+        </div>
+
+        <div id="final" class="hidden">
+            <h1 style="font-size: 60px;">🎊</h1>
+            <h1>مبروووك! 🎉</h1>
+            <p>لقد صمدت أمام جنون المبرمج واستحقت الهدية!</p>
+            <div style="background:var(--secondary); padding:20px; border-radius:20px; color:white; font-weight:bold; font-size:1.2rem;">
+                🎁 الهدية موجودة في:<br>
+                [اكتب هنا: تحت السرير / داخل الفرن / خلف التلفاز]
+            </div>
+            <p>كل عام وأنت بخير! ❤️</p>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+    function startGame() {
+        // إخفاء واجهة الترحيب
+        document.getElementById('welcomeScreen').style.display = 'none';
+        // إظهار واجهة اللعبة
+        document.getElementById('gameScreen').style.display = 'block';
+    }
+
+    function checkStep(step, correct) {
+        let userInput = document.getElementById('ans' + step).value.trim();
+        if (userInput == correct) {
+            alert("✅ أحسنت! المرحلة التالية فتحت.");
+            document.getElementById('step' + step).classList.add('hidden');
+            let next = (step === 1) ? 'step2' : 'final';
+            document.getElementById(next).classList.remove('hidden');
+        } else {
+            alert("❌ خطأ! يبدو ان الاكلمة خاطئة!");
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
+<style>
+    body{
+background-color:rgb(253, 225, 237) ;
+
+    }
+
+    img{
+       position: relative;
+        right:  80px;
+    }
+</style>
